@@ -205,8 +205,9 @@ export default function Home({ empresas }: HomeProps) {
 
 
 export const getStaticProps: GetStaticProps<HomeProps> = async (context) => {
-  const req = await Axios.get(`items/${configs.prefixo}company?limit=-1&sort=title&fields=*.*.*.*.*`)
-  var empresas = req.data.data
+  //const req = await Axios.get(`items/${configs.prefixo}company?limit=-1&sort=title&fields=*.*.*.*.*`)
+  //var empresas = req.data.data
+  const empresas = {}
 
   return {
     props: {
