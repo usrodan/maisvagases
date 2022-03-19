@@ -3,7 +3,7 @@ let configs = {
     title:"Mais Vagas ES",
     siteUrl:"https://www.maisvagases.com.br",
     urlCompartilhamento:"https://app.maisvagases.com.br", 
-    apiUrl:"https://api.maisvagases.com.br",  
+    apiUrl:process.env.NEXT_PUBLIC_API,  
     prefixo:"es_", 
     sufix:"es",
     graphCMS_Url : 'https://api-eu-central-1.graphcms.com/v2/ckh4kzl5mj7j001z263x6904u/master',
@@ -43,7 +43,7 @@ let configs = {
     //ChatBot
      numeroTel: "+5527992924645",
      apiWhatsapp: "985268",
-     tokenTelegram:"989164012:AAEOQ7IVaR_pHx_t5Ih-ThY7fYv2KSE0U9k",
+     tokenTelegram: process.env.NEXT_PUBLIC_TELEGRAMTOKEN,
      chatId:"-1001336263431"
   }  
 export default configs
