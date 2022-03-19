@@ -1,0 +1,217 @@
+import React, { useEffect, useState } from 'react'
+import configs from '../configs'
+import Link from 'next/link'
+import Axios from '../utils/axios'
+
+import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
+import PageHeaderDesktop from "../components/PageHeaderDesktop"
+import Footer from "../components/Footer"
+
+import Image from 'next/image'
+
+import { Buildings as EmpresaIcon } from '@styled-icons/boxicons-regular/Buildings'
+import { LeftArrowAlt as ArrowLeft } from '@styled-icons/boxicons-regular/LeftArrowAlt'
+import { Briefcase as BriefcaseIcon } from '@styled-icons/boxicons-regular/Briefcase'
+
+import { useRouter } from 'next/dist/client/router';
+import SEO from '../components/SEO';
+import EmpresaItem from '../components/EmpresaItem';
+import PageHeaderWithTitle from '../components/PageHeaderWithTitle';
+import FooterDesktop from '../components/FooterDesktop';
+import AdsHorizontal750 from '../components/AdsHorizontal750';
+import AdsQuadrado from '../components/AdsQuadrado';
+
+interface iVagas {
+  slug: string;
+}
+
+interface Empresas {
+  title: string;
+  slug: string;
+  place: {
+    title: string;
+  }
+  logo: {
+    data: {
+      full_url: string;
+    }
+  }
+  jobs: iVagas[];
+}
+
+interface HomeProps {
+  empresas: Empresas[]
+}
+
+interface iLetters {
+  alphabet: string;
+  record: Empresas[]
+}
+
+export default function Home({ empresas }: HomeProps) {
+
+  //const EmpresasListStore = EmpresasList.useState(s => s);
+  const [EmpresasListStore, setEmpresasListStore] = useState([[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []])
+  const [letrasEVagas, setLetrasEVagas] = useState([])
+  const [alfabeto, setalfabeto] = useState("abcdefghijklmnopqrstuvwxyz".split(''))
+  const router = useRouter()
+
+  useEffect(() => {
+
+    var alphabet = "abcdefghijklmnopqrstuvwxyz".split('');
+    var alphabetPosition = text =>
+      text.split('').map(x => alphabet.indexOf(x));
+
+    const newLista = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []]
+    const newLetrasEVagas = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+
+    empresas.map(empresa => {
+      var letraEmpresa = empresa.slug.charAt(0)
+      newLista[alphabetPosition(letraEmpresa)].push(empresa)
+      newLetrasEVagas[alphabetPosition(letraEmpresa)] += empresa.jobs.length
+
+    })
+
+
+
+    setLetrasEVagas(newLetrasEVagas)
+    setEmpresasListStore(newLista)
+
+
+
+  }, [empresas])
+
+  function alphabetPosition(letter) {
+
+    var alphabet = "abcdefghijklmnopqrstuvwxyz".split('');
+    var a = text => text.split('').map(x => alphabet.indexOf(x));
+
+    return a(letter)
+
+  }
+
+
+  return (
+    <div id="container" className="flex flex-col min-h-screen bg-gray-100 pb-24">
+      <SEO
+        title={configs.title}
+        description=""
+        shoudExcludeTitleSuffix
+
+        siteName={configs.title}
+      />
+
+      {/* -----  MOBILE ---- */}
+      <div className="md:hidden" >
+        <PageHeaderWithTitle title="Empresas" icon={<EmpresaIcon size={24} />}>  </PageHeaderWithTitle>
+
+        <div id="InnerContainer" className="p-4 rounded-tr-2xl relative w-full bg-gray-100 flex -mt-9">
+
+          <div id="treecolums">
+            <div className="flex flex-wrap">
+
+              {EmpresasListStore && EmpresasListStore.map((grupo, index) => {
+
+                return grupo.map((empresa, index) => {
+                  return (<>
+
+                    {(index == 0 && letrasEVagas[alphabetPosition(empresa.slug.charAt(0))] > 0) && <span key={index} className="flex opensans-extra-bold text-xl ml-2 mt-2 uppercase">{empresa.slug.charAt(0)}</span>}
+
+                    {empresa.jobs.length != 0 && <EmpresaItem
+                      key={empresa.slug}
+                      img={empresa.logo ? empresa.logo.data.full_url : configs.notFoundImage}
+                      nome={empresa.title && empresa.title}
+                      qtdVagas={empresa.jobs && empresa.jobs.length}
+                      url={empresa.slug}
+                    />}
+                  </>)
+                })
+
+
+
+
+              })}
+            </div>
+
+          </div>
+        </div>
+
+        <Footer />
+      </div>
+      {/* ---FIM MOBILE ----*/}
+
+
+      {/* --- DESKTOP ----*/}
+      <div className="hidden md:block">
+        <PageHeaderDesktop hideLogo={false} />
+        <div id="desktop" className="flex flex-col p-4 w-full items-center justify-center">
+
+          <div id="treecolums" className="flex mt-4 w-full max-w-5xl">
+            <div className="flex flex-col w-full flex-wrap">
+
+              <div className='text-lg p-4 mb-3 rounded-md bg-white w-full flex justify-between uppercase opensans-bold'>
+                {alfabeto.map(l => {
+                  return <a key={l} href={`#letra-${l}`} className={`${letrasEVagas[alphabetPosition(l)] == 0 ? 'text-gray-400' : "cursor-pointer"}`}>{l}  </a>
+                })}
+              </div>
+              <AdsHorizontal750 />
+              <div style={{ display: "flex", width: "100%", flexFlow: "row wrap" }}  >
+
+                {EmpresasListStore && EmpresasListStore.map((grupo, index) => {
+
+                  return <>
+                    {/*index == 5 ? <div className={`bg-white  m-5 px-3 py-5 w-72 rounded-md `}>  <AdsQuadrado/> </div> : null */}
+                    <div style={{    /* Some gutter */ }} className={`bg-white   m-5 px-3 py-5 w-72 rounded-md ${letrasEVagas[index] == 0 && "hidden"}`}>
+                      {grupo.map((empresa, index) => {
+                        return (<>
+                          {(index == 0 && letrasEVagas[alphabetPosition(empresa.slug.charAt(0))] > 0) && <span key={index} id={`letra-${empresa.slug.charAt(0)}`} className={`  bg-primary px-4 py-2 mb-2 rounded-md w-full text-white opensans-extra-bold text-xl   uppercase`}>{empresa.slug.charAt(0)}</span>}
+                          <div className="mt-3   ">
+                            {empresa.jobs.length != 0 && <a href={`/empresa/${empresa.slug}`}>
+                              <div
+                                className={`cursor-pointer rounded-md p-2 hover:bg-secondary hover:bg-opacity-20 opensans-regular flex w-full justify-between`}
+                                key={empresa.slug}
+                              >
+                                <span>{empresa.title && empresa.title}</span>
+
+                                <span className="flex items-center  "><BriefcaseIcon className="mr-2" size={16} />{empresa.jobs && empresa.jobs.length} </span>
+                              </div>
+                            </a>}
+
+                          </div>
+                        </>)
+                      })}
+                    </div>
+                  </>
+                })}
+              </div>
+
+            </div>
+
+
+          </div>
+
+
+        </div>
+        <FooterDesktop />
+      </div>
+      {/* ---FIM DESKTOP ----*/}
+
+
+
+    </div >
+  )
+}
+
+
+export const getStaticProps: GetStaticProps<HomeProps> = async (context) => {
+  const req = await Axios.get(`items/${configs.prefixo}company?limit=-1&sort=title&fields=*.*.*.*.*`)
+  var empresas = req.data.data
+
+  return {
+    props: {
+      empresas
+    },
+    revalidate: 60
+  }
+}

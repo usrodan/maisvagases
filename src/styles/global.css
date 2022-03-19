@@ -1,0 +1,404 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html {
+    scroll-behavior: smooth;
+}
+
+@font-face {
+    font-family: "OpenSans Regular";
+    src: url("/assets/fonts/OpenSans/OpenSans-Regular.ttf");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "OpenSans Black";
+    src: url("/assets/fonts/OpenSans/OpenSans-Black.ttf");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "OpenSans Black Italic";
+    src: url("/assets/fonts/OpenSans/OpenSans-BlackItalic.ttf");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "OpenSans Bold";
+    src: url("/assets/fonts/OpenSans/OpenSans-Bold.ttf");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "OpenSans Bold Italic";
+    src: url("/assets/fonts/OpenSans/OpenSans-BoldItalic.ttf");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "OpenSans Extra Bold";
+    src: url("/assets/fonts/OpenSans/OpenSans-ExtraBold.ttf");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "OpenSans Extra Bold Italic";
+    src: url("/assets/fonts/OpenSans/OpenSans-ExtraBoldItalic.ttf");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "OpenSans Extra Light";
+    src: url("/assets/fonts/OpenSans/OpenSans-ExtraLight.ttf");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "OpenSans Extra Light Italic";
+    src: url("/assets/fonts/OpenSans/OpenSans-ExtraLightItalic.ttf");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "OpenSans Italic";
+    src: url("/assets/fonts/OpenSans/OpenSans-Italic.ttf");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "OpenSans Light";
+    src: url("/assets/fonts/OpenSans/OpenSans-Light.ttf");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "OpenSans Light Italic";
+    src: url("/assets/fonts/OpenSans/OpenSans-LightItalic.ttf");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "OpenSans Medium";
+    src: url("/assets/fonts/OpenSans/OpenSans-Medium.ttf");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "OpenSans Medium Italic";
+    src: url("/assets/fonts/OpenSans/OpenSans-MediumItalic.ttf");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "OpenSans Semi Bold";
+    src: url("/assets/fonts/OpenSans/OpenSans-SemiBold.ttf");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "OpenSans Semi Bold Italic";
+    src: url("/assets/fonts/OpenSans/OpenSans-SemiBoldItalic.ttf");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "OpenSans Thin";
+    src: url("/assets/fonts/OpenSans/OpenSans-Thin.ttf");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "OpenSans Thin Italic";
+    src: url("/assets/fonts/OpenSans/OpenSans-ThinItalic.ttf");
+    font-display: swap;
+}
+
+.opensans-regular {
+    font-family: 'OpenSans Regular', sans-serif !important;
+}
+
+.opensans-bold {
+    font-family: 'OpenSans Bold', sans-serif !important;
+}
+
+.opensans-bold-italic {
+    font-family: 'OpenSans Bold Italic', sans-serif !important;
+}
+
+.opensans-extra-bold {
+    font-family: 'OpenSans Extra Bold', sans-serif !important;
+}
+
+.opensans-extra-bold-italic {
+    font-family: 'OpenSans Extra Bold Italic', sans-serif !important;
+}
+
+.opensans-black {
+    font-family: 'OpenSans Black', sans-serif !important;
+}
+
+.opensans-black-italic {
+    font-family: 'OpenSans Black Italic', sans-serif !important;
+}
+
+.opensans-extra-light {
+    font-family: 'OpenSans Extra Light', sans-serif !important;
+}
+
+.opensans-extra-light-italic {
+    font-family: 'OpenSans Extra Light Italic', sans-serif !important;
+}
+
+.opensans-italic {
+    font-family: 'OpenSans Italic', sans-serif !important;
+}
+
+.opensans-light {
+    font-family: 'OpenSans Light', sans-serif !important;
+}
+
+.opensans-medium {
+    font-family: 'OpenSans Medium', sans-serif !important;
+}
+
+.opensans-medium-italic {
+    font-family: 'OpenSans Medium Italic', sans-serif !important;
+}
+
+.opensans-semi-bold {
+    font-family: 'OpenSans Semi Bold', sans-serif !important;
+}
+
+.opensans-semi-bold-italic {
+    font-family: 'OpenSans Semi Bold Italic', sans-serif !important;
+}
+
+.opensans-thin {
+    font-family: 'OpenSans Thin', sans-serif !important;
+}
+
+.opensans-thin-italic {
+    font-family: 'OpenSans Thin Italic', sans-serif !important;
+}
+
+html,
+body,
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: 0;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+input {
+    width: 100%;
+    border: none;
+    color: #138FCE;
+}
+
+.rec {
+    border: none !important;
+    box-shadow: none!important;
+}
+
+.rec-dot {
+    width: 5px!important;
+    height: 5px!important;
+    background: #DADADA!important;
+    border: none!important;
+    box-shadow: none!important;
+}
+
+.rec-dot_active {
+    background: #138FCE!important;
+    border: none!important;
+    box-shadow: none!important;
+}
+
+.rec-slider-container {
+    margin: 0!important;
+}
+
+input:-webkit-autofill,
+select:-webkit-autofill {
+    box-shadow: rgb(255, 255, 255) 0px 0px 0px 30px inset;
+    -webkit-text-fill-color: rgb(19, 143, 206) !important;
+}
+
+.select-cinza {
+    background-image: url("data:image/svg+xml;utf8,<svg fill='%23C8CDD1' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+}
+
+.select-azul {
+    background-image: url("data:image/svg+xml;utf8,<svg fill='%23138FCE' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+}
+
+.select-vermelho {
+    background-image: url("data:image/svg+xml;utf8,<svg fill='%23E2202C' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: transparent;
+    background-repeat: no-repeat;
+    background-position-x: 100%;
+    background-position-y: -4px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-right: 2rem;
+}
+
+
+/*** Styles added to fix the issue with zoom in on iphone ***/
+
+
+/* iPhone < 5: */
+
+@media screen and (device-aspect-ratio: 2/3) {
+    select,
+    textarea,
+    input[type="text"],
+    input[type="password"],
+    input[type="datetime"],
+    input[type="datetime-local"],
+    input[type="date"],
+    input[type="month"],
+    input[type="time"],
+    input[type="week"],
+    input[type="number"],
+    input[type="email"],
+    input[type="url"] {
+        font-size: 16px;
+    }
+}
+
+
+/* iPhone 5, 5C, 5S, iPod Touch 5g */
+
+@media screen and (device-aspect-ratio: 40/71) {
+    select,
+    textarea,
+    input[type="text"],
+    input[type="password"],
+    input[type="datetime"],
+    input[type="datetime-local"],
+    input[type="date"],
+    input[type="month"],
+    input[type="time"],
+    input[type="week"],
+    input[type="number"],
+    input[type="email"],
+    input[type="url"] {
+        font-size: 16px;
+    }
+}
+
+
+/* iPhone 6, iPhone 6s, iPhone 7 portrait/landscape */
+
+@media screen and (device-aspect-ratio: 375/667) {
+    select,
+    textarea,
+    input[type="text"],
+    input[type="password"],
+    input[type="datetime"],
+    input[type="datetime-local"],
+    input[type="date"],
+    input[type="month"],
+    input[type="time"],
+    input[type="week"],
+    input[type="number"],
+    input[type="email"],
+    input[type="url"] {
+        font-size: 16px;
+    }
+}
+
+
+/* iPhone 6 Plus, iPhone 6s Plus, iPhone 7 Plus portrait/landscape */
+
+@media screen and (device-aspect-ratio: 9/16) {
+    select,
+    textarea,
+    input[type="text"],
+    input[type="password"],
+    input[type="datetime"],
+    input[type="datetime-local"],
+    input[type="date"],
+    input[type="month"],
+    input[type="time"],
+    input[type="week"],
+    input[type="number"],
+    input[type="email"],
+    input[type="url"] {
+        font-size: 16px;
+    }
+}
+
+h1 {
+    font-size: 2em;
+    font-weight: bold;
+    line-height: 3em;
+}
+
+h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+    line-height: 2em;
+}
+
+h3 {
+    font-size: 1.17em;
+    font-weight: bold;
+    line-height: 1.5em;
+}
+
+h4 {
+    font-size: 1.00em;
+    font-weight: bold;
+    line-height: 1.17em;
+}
+
+h5 {
+    font-size: 0.83em;
+    font-weight: bold;
+    line-height: 1.00em;
+}
+
+h6 {
+    font-size: 0.67em;
+    font-weight: bold;
+    line-height: 0.83em;
+}
+
+
+/* CUSTOM Scroll bar  */
+
+::-webkit-scrollbar {
+    width: 5px !important;
+}
+
+::-webkit-scrollbar-track {
+    background: #f3f4f6 !important;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #011339;
+    border-radius: 12px !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #011339 !important;
+}
