@@ -10,11 +10,10 @@ import { Whatsapp as WhatsappIcon } from '@styled-icons/remix-fill/Whatsapp'
 
 import { Search } from '../store/Search'
 import { Options } from '../store/Options'
-import { request } from 'graphql-request'
 import configs from '../configs'
+import client from '../utils/apollo'   
+import { gql } from '@apollo/client';
 import { useRouter } from 'next/router'
-
-import { Scope } from "@unform/core"
 import { Form } from "@unform/web"
 import Input from "../components/Input"
 import Select from "../components/Select" 
@@ -34,14 +33,46 @@ const SearchAndFilterVagas: React.FC = () => {
   }, [])
 
   const fetchDados = async () => {
-    const req_cidades = await Axios.get(`items/${configs.prefixo}places?limit=-1&fields=id,title,slug&sort=title`)
-    const cidades = req_cidades.data.data
 
-    const req_cat = await Axios.get(`items/${configs.prefixo}categories?limit=-1&fields=id,title,slug&sort=title`)
-    const categorias = req_cat.data.data
+    const { data } = await client.query({
+      query: gql` 
+      query {
+        cidades {
+          data {
+            id
+            attributes {
+              cidade
+              slug 
+            }
+          }
+        }
+        categorias {
+          data {
+            id
+            attributes {
+              categoria
+              slug 
+            }
+          }
+        }
+        tipos {
+          data {
+            id
+            attributes {
+              tipo
+              slug 
+            }
+          }
+        }
 
-    const req_tipos = await Axios.get(`items/${configs.prefixo}types?limit=-1&fields=id,title,slug&sort=title`)
-    const tipos = req_tipos.data.data
+      }
+    `,
+    });
+
+    console.log(data)
+    const cidades = data.cidades.data
+    const categorias = data.categorias.data
+    const tipos = data.tipos.data
 
 
     Options.update(s => {
@@ -98,7 +129,7 @@ const SearchAndFilterVagas: React.FC = () => {
                 <option value="">Categoria</option>
                 {categorias.map(c => {
 
-                  return <option key={c.id} value={c.id}> {c.title}</option>
+                  return <option key={c.id} value={c.id}> {c.attributes.categoria}</option>
                 })}
               </Select>
             </div>
@@ -107,7 +138,7 @@ const SearchAndFilterVagas: React.FC = () => {
               <Select className="w-4/5" name="cidade" >
                 <option value="">Cidade</option>
                 {cidades.map(c => {
-                  return <option key={c.id} value={c.id}> {c.title}</option>
+                  return <option key={c.id} value={c.id}> {c.attributes.cidade}</option>
                 })}
               </Select>
             </div>
@@ -119,7 +150,7 @@ const SearchAndFilterVagas: React.FC = () => {
               <Select className="w-4/5" name="tipo" >
                 <option value="">Tipo</option>
                 {tipos.map(c => {
-                  return <option key={c.id} value={c.id}> {c.title}</option>
+                  return <option key={c.id} value={c.id}> {c.attributes.tipo}</option>
                 })}
               </Select>
             </div>

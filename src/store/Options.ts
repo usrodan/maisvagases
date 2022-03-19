@@ -2,20 +2,27 @@ import { Store } from "pullstate";
 
 interface iTipo{
     id:number;
-    title:string;
-    slug:string;
+    attributes:{ 
+        tipo:string;
+        slug:string;
+    }
 }
 
 interface iCategoria{
     id:number;
-    title:string;
-    slug:string;
+    attributes:{ 
+        categoria:string;
+        slug:string;
+    }
+ 
 }
 
 interface iCidade{
     id:number;
-    title:string;
-    slug:string;
+    attributes:{ 
+        cidade:string;
+        slug:string;
+    }
 }
 
 

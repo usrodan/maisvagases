@@ -291,7 +291,7 @@ export default function Vagas() {
                 <Collapse in={colapseCidades}>
                   <div className="opensans-regular text-sm flex flex-col h-36 overflow-y-scroll">
                     {cidades.map(c => {
-                      return cidade == String(c.id) ? <span className="cursor-pointer block items-center" onClick={() => checkBoxCidade("")} key={c.id}><CheckboxChecked color={configs.secondary} size={24} />{c.title}</span> : <span className="cursor-pointer block items-center" onClick={() => checkBoxCidade(c.id)} key={c.id}><Checkbox size={24} />{c.title}</span>
+                      return cidade == String(c.id) ? <span className="cursor-pointer block items-center" onClick={() => checkBoxCidade("")} key={c.id}><CheckboxChecked color={configs.secondary} size={24} />{c.attributes.cidade}</span> : <span className="cursor-pointer block items-center" onClick={() => checkBoxCidade(c.id)} key={c.id}><Checkbox size={24} />{c.attributes.cidade}</span>
                     })}
                   </div>
                 </Collapse>
@@ -302,7 +302,7 @@ export default function Vagas() {
                 <Collapse in={colapseCategorias}>
                   <div className="opensans-regular text-sm flex flex-col h-36 overflow-y-scroll">
                     {categorias.map(c => {
-                      return categoria == String(c.id) ? <span className="cursor-pointer block items-center" onClick={() => checkBoxCategoria("")} key={c.id}><CheckboxChecked color={configs.secondary} size={24} /><span  >{c.title}</span></span> : <span className="cursor-pointer block items-center" onClick={() => checkBoxCategoria(c.id)} key={c.id}><Checkbox size={24} />{c.title}</span>
+                      return categoria == String(c.id) ? <span className="cursor-pointer block items-center" onClick={() => checkBoxCategoria("")} key={c.id}><CheckboxChecked color={configs.secondary} size={24} /><span  >{c.attributes.categoria}</span></span> : <span className="cursor-pointer block items-center" onClick={() => checkBoxCategoria(c.id)} key={c.id}><Checkbox size={24} />{c.attributes.categoria}</span>
                     })}
                   </div>
                 </Collapse>
@@ -315,7 +315,7 @@ export default function Vagas() {
                 <Collapse in={colapseTipos}>
                   <div className="opensans-regular text-sm flex flex-col h-36 overflow-y-scroll">
                     {tipos.map(t => {
-                      return tipo == String(t.id) ? <span className="cursor-pointer block items-center" onClick={() => checkBoxTipo("")} key={t.id}><CheckboxChecked color={configs.secondary} size={24} />{t.title}</span> : <span className="cursor-pointer block items-center" onClick={() => checkBoxTipo(t.id)} key={t.id}><Checkbox size={24} />{t.title}</span>
+                      return tipo == String(t.id) ? <span className="cursor-pointer block items-center" onClick={() => checkBoxTipo("")} key={t.id}><CheckboxChecked color={configs.secondary} size={24} />{t.attributes.tipo}</span> : <span className="cursor-pointer block items-center" onClick={() => checkBoxTipo(t.id)} key={t.id}><Checkbox size={24} />{t.attributes.tipo}</span>
                     })}
                   </div>
                 </Collapse>
