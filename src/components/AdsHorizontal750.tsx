@@ -6,7 +6,6 @@ interface Props {
 }
 
 const AdsHorizontal: React.FC<Props> = () => {
-
   return (
     <div className="w-full flex h-24 items-center justify-center p-2 rounded-md bg-white shadow-md mb-4">
          <AdSense.Google
